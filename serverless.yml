@@ -67,7 +67,11 @@ functions:
       - http:
           path: /
           method: get
-          cors: true
+          cors:
+            - enabled: true
+            - headers: "Content-Type,Authorization"
+            - methods: GET
+            - origin: "*"
 #      - websocket: $connect
 #      - s3: ${env:BUCKET}
 #      - schedule: rate(10 minutes)
