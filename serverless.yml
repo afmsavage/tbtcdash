@@ -67,6 +67,7 @@ functions:
       - http:
           path: /
           method: get
+          cors: true
 #      - websocket: $connect
 #      - s3: ${env:BUCKET}
 #      - schedule: rate(10 minutes)
