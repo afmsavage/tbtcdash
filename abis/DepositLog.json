@@ -1,0 +1,566 @@
+{
+  "contractName": "DepositLog",
+  "abi": [
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "_depositContractAddress",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "_timestamp",
+          "type": "uint256"
+        }
+      ],
+      "name": "CourtesyCalled",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "_depositContractAddress",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "_keepAddress",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "_timestamp",
+          "type": "uint256"
+        }
+      ],
+      "name": "Created",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "_depositContractAddress",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "_timestamp",
+          "type": "uint256"
+        }
+      ],
+      "name": "ExitedCourtesyCall",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "_depositContractAddress",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "_timestamp",
+          "type": "uint256"
+        }
+      ],
+      "name": "FraudDuringSetup",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "_depositContractAddress",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "bytes32",
+          "name": "_txid",
+          "type": "bytes32"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "_timestamp",
+          "type": "uint256"
+        }
+      ],
+      "name": "Funded",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "_depositContractAddress",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "bytes",
+          "name": "_abortOutputScript",
+          "type": "bytes"
+        }
+      ],
+      "name": "FunderAbortRequested",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "_depositContractAddress",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "bytes32",
+          "name": "_digest",
+          "type": "bytes32"
+        },
+        {
+          "indexed": false,
+          "internalType": "bytes32",
+          "name": "_r",
+          "type": "bytes32"
+        },
+        {
+          "indexed": false,
+          "internalType": "bytes32",
+          "name": "_s",
+          "type": "bytes32"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "_timestamp",
+          "type": "uint256"
+        }
+      ],
+      "name": "GotRedemptionSignature",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "_depositContractAddress",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "_timestamp",
+          "type": "uint256"
+        }
+      ],
+      "name": "Liquidated",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "_depositContractAddress",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "bytes32",
+          "name": "_txid",
+          "type": "bytes32"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "_timestamp",
+          "type": "uint256"
+        }
+      ],
+      "name": "Redeemed",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "_depositContractAddress",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "_requester",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "bytes32",
+          "name": "_digest",
+          "type": "bytes32"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "_utxoValue",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "bytes",
+          "name": "_redeemerOutputScript",
+          "type": "bytes"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "_requestedFee",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "bytes",
+          "name": "_outpoint",
+          "type": "bytes"
+        }
+      ],
+      "name": "RedemptionRequested",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "_depositContractAddress",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "bytes32",
+          "name": "_signingGroupPubkeyX",
+          "type": "bytes32"
+        },
+        {
+          "indexed": false,
+          "internalType": "bytes32",
+          "name": "_signingGroupPubkeyY",
+          "type": "bytes32"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "_timestamp",
+          "type": "uint256"
+        }
+      ],
+      "name": "RegisteredPubkey",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "_depositContractAddress",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "_timestamp",
+          "type": "uint256"
+        }
+      ],
+      "name": "SetupFailed",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "_depositContractAddress",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "bool",
+          "name": "_wasFraud",
+          "type": "bool"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "_timestamp",
+          "type": "uint256"
+        }
+      ],
+      "name": "StartedLiquidation",
+      "type": "event"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_caller",
+          "type": "address"
+        }
+      ],
+      "name": "approvedToLog",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [],
+      "name": "logCourtesyCalled",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_keepAddress",
+          "type": "address"
+        }
+      ],
+      "name": "logCreated",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [],
+      "name": "logExitedCourtesyCall",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [],
+      "name": "logFraudDuringSetup",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "_txid",
+          "type": "bytes32"
+        }
+      ],
+      "name": "logFunded",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "internalType": "bytes",
+          "name": "_abortOutputScript",
+          "type": "bytes"
+        }
+      ],
+      "name": "logFunderRequestedAbort",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "_digest",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "bytes32",
+          "name": "_r",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "bytes32",
+          "name": "_s",
+          "type": "bytes32"
+        }
+      ],
+      "name": "logGotRedemptionSignature",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [],
+      "name": "logLiquidated",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "_txid",
+          "type": "bytes32"
+        }
+      ],
+      "name": "logRedeemed",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_requester",
+          "type": "address"
+        },
+        {
+          "internalType": "bytes32",
+          "name": "_digest",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_utxoValue",
+          "type": "uint256"
+        },
+        {
+          "internalType": "bytes",
+          "name": "_redeemerOutputScript",
+          "type": "bytes"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_requestedFee",
+          "type": "uint256"
+        },
+        {
+          "internalType": "bytes",
+          "name": "_outpoint",
+          "type": "bytes"
+        }
+      ],
+      "name": "logRedemptionRequested",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "_signingGroupPubkeyX",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "bytes32",
+          "name": "_signingGroupPubkeyY",
+          "type": "bytes32"
+        }
+      ],
+      "name": "logRegisteredPubkey",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [],
+      "name": "logSetupFailed",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "internalType": "bool",
+          "name": "_wasFraud",
+          "type": "bool"
+        }
+      ],
+      "name": "logStartedLiquidation",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "bytecode": "0x608060405234801561001057600080fd5b50610cc6806100206000396000f3fe608060405234801561001057600080fd5b50600436106100ea5760003560e01c8063869f94691161008c578063c8fba24311610066578063c8fba24314610336578063ce2c07ce1461033e578063e2c50ad8146103e4578063f760621e146103ec576100ea565b8063869f9469146102d15780639ffb3862146102f4578063a831c8161461032e576100ea565b8063282bfd38116100c8578063282bfd38146102525780633aac3467146102785780636e1ba283146102975780637ed451a4146102b4576100ea565b806318e647dd146100ef57806322a147e61461024257806322e5724c1461024a575b600080fd5b610240600480360360c081101561010557600080fd5b6001600160a01b03823516916020810135916040820135919081019060808101606082013564010000000081111561013c57600080fd5b82018360208201111561014e57600080fd5b8035906020019184600183028401116401000000008311171561017057600080fd5b91908080601f016020809104026020016040519081016040528093929190818152602001838380828437600092019190915250929584359590949093506040810192506020013590506401000000008111156101cb57600080fd5b8201836020820111156101dd57600080fd5b803590602001918460018302840111640100000000831117156101ff57600080fd5b91908080601f016020809104026020016040519081016040528093929190818152602001838380828437600092019190915250929550610415945050505050565b005b610240610586565b610240610602565b6102406004803603602081101561026857600080fd5b50356001600160a01b031661067e565b6102406004803603602081101561028e57600080fd5b50351515610705565b610240600480360360208110156102ad57600080fd5b5035610787565b610240600480360360208110156102ca57600080fd5b5035610805565b610240600480360360408110156102e757600080fd5b5080359060200135610883565b61031a6004803603602081101561030a57600080fd5b50356001600160a01b031661090d565b604080519115158252519081900360200190f35b61024061098d565b610240610a09565b6102406004803603602081101561035457600080fd5b81019060208101813564010000000081111561036f57600080fd5b82018360208201111561038157600080fd5b803590602001918460018302840111640100000000831117156103a357600080fd5b91908080601f016020809104026020016040519081016040528093929190818152602001838380828437600092019190915250929550610a85945050505050565b610240610b65565b6102406004803603606081101561040257600080fd5b5080359060208101359060400135610be1565b61041e3361090d565b6104595760405162461bcd60e51b8152600401808060200182810382526024815260200180610c6e6024913960400191505060405180910390fd5b84866001600160a01b0316336001600160a01b03167f7959c380174061a21a3ba80243a032ba9cd10dc8bd1736d7e835c94e97a35a9887878787604051808581526020018060200184815260200180602001838103835286818151815260200191508051906020019080838360005b838110156104e05781810151838201526020016104c8565b50505050905090810190601f16801561050d5780820380516001836020036101000a031916815260200191505b50838103825284518152845160209182019186019080838360005b83811015610540578181015183820152602001610528565b50505050905090810190601f16801561056d5780820380516001836020036101000a031916815260200191505b50965050505050505060405180910390a4505050505050565b61058f3361090d565b6105ca5760405162461bcd60e51b8152600401808060200182810382526024815260200180610c6e6024913960400191505060405180910390fd5b60408051428152905133917f6e7b45210b79c12cd1332babd8d86c0bbb9ca898a89ce0404f17064dbfba18c0919081900360200190a2565b61060b3361090d565b6106465760405162461bcd60e51b8152600401808060200182810382526024815260200180610c6e6024913960400191505060405180910390fd5b60408051428152905133917f07f0eaafadb9abb1d28da85d4b4c74f1939fd61b535c7f5ab501f618f07e76ee919081900360200190a2565b6106873361090d565b6106c25760405162461bcd60e51b8152600401808060200182810382526024815260200180610c6e6024913960400191505060405180910390fd5b6040805142815290516001600160a01b0383169133917f822b3073be62c5c7f143c2dcd71ee266434ee935d90a1eec3be34710ac8ec1a29181900360200190a350565b61070e3361090d565b6107495760405162461bcd60e51b8152600401808060200182810382526024815260200180610c6e6024913960400191505060405180910390fd5b604080518215158152426020820152815133927fbef11c059eefba82a15aea8a3a89c86fd08d7711c88fa7daea2632a55488510c928290030190a250565b6107903361090d565b6107cb5760405162461bcd60e51b8152600401808060200182810382526024815260200180610c6e6024913960400191505060405180910390fd5b604080514281529051829133917f44b7f176bcc739b54bd0800fe491cbdea19df7d4d6b19c281462e6b4fc5043449181900360200190a350565b61080e3361090d565b6108495760405162461bcd60e51b8152600401808060200182810382526024815260200180610c6e6024913960400191505060405180910390fd5b604080514281529051829133917fe34c70bd3e03956978a5c76d2ea5f3a60819171afea6dee4fc12b2e45f72d43d9181900360200190a350565b61088c3361090d565b6108c75760405162461bcd60e51b8152600401808060200182810382526024815260200180610c6e6024913960400191505060405180910390fd5b60408051838152602081018390524281830152905133917f8ee737ab16909c4e9d1b750814a4393c9f84ab5d3a29c08c313b783fc846ae33919081900360600190a25050565b6000805460408051634f558e7960e01b81526001600160a01b03858116600483015291519190921691634f558e79916024808301926020929190829003018186803b15801561095b57600080fd5b505afa15801561096f573d6000803e3d6000fd5b505050506040513d602081101561098557600080fd5b505192915050565b6109963361090d565b6109d15760405162461bcd60e51b8152600401808060200182810382526024815260200180610c6e6024913960400191505060405180910390fd5b60408051428152905133917f8fd2cfb62a35fccc1ecef829f83a6c2f840b73dad49d3eaaa402909752086d4b919081900360200190a2565b610a123361090d565b610a4d5760405162461bcd60e51b8152600401808060200182810382526024815260200180610c6e6024913960400191505060405180910390fd5b60408051428152905133917fa5ee7a2b0254fce91deed604506790ed7fa072d0b14cba4859c3bc8955b9caac919081900360200190a2565b610a8e3361090d565b610ac95760405162461bcd60e51b8152600401808060200182810382526024815260200180610c6e6024913960400191505060405180910390fd5b604080516020808252835181830152835133937fa6e9673b5d53b3fe3c62b6459720f9c2a1b129d4f69acb771404ba8681b6a9309386939092839283019185019080838360005b83811015610b28578181015183820152602001610b10565b50505050905090810190601f168015610b555780820380516001836020036101000a031916815260200191505b509250505060405180910390a250565b610b6e3361090d565b610ba95760405162461bcd60e51b8152600401808060200182810382526024815260200180610c6e6024913960400191505060405180910390fd5b60408051428152905133917f1e61af503f1d7de21d5300094c18bf8700f82b2951a4d54dd2adda13f6b3da30919081900360200190a2565b610bea3361090d565b610c255760405162461bcd60e51b8152600401808060200182810382526024815260200180610c6e6024913960400191505060405180910390fd5b604080518381526020810183905242818301529051849133917f7f7d7327762d01d2c4a552ea0be2bc5a76264574a80aa78083e691a840e509f29181900360600190a350505056fe43616c6c6572206973206e6f7420617070726f76656420746f206c6f67206576656e7473a265627a7a723158203e3afc1df726271db382f3aba1a8ecb882bc185ab8068598923edcaf5e99f49164736f6c63430005110032",
+  "deployedBytecode": "0x608060405234801561001057600080fd5b50600436106100ea5760003560e01c8063869f94691161008c578063c8fba24311610066578063c8fba24314610336578063ce2c07ce1461033e578063e2c50ad8146103e4578063f760621e146103ec576100ea565b8063869f9469146102d15780639ffb3862146102f4578063a831c8161461032e576100ea565b8063282bfd38116100c8578063282bfd38146102525780633aac3467146102785780636e1ba283146102975780637ed451a4146102b4576100ea565b806318e647dd146100ef57806322a147e61461024257806322e5724c1461024a575b600080fd5b610240600480360360c081101561010557600080fd5b6001600160a01b03823516916020810135916040820135919081019060808101606082013564010000000081111561013c57600080fd5b82018360208201111561014e57600080fd5b8035906020019184600183028401116401000000008311171561017057600080fd5b91908080601f016020809104026020016040519081016040528093929190818152602001838380828437600092019190915250929584359590949093506040810192506020013590506401000000008111156101cb57600080fd5b8201836020820111156101dd57600080fd5b803590602001918460018302840111640100000000831117156101ff57600080fd5b91908080601f016020809104026020016040519081016040528093929190818152602001838380828437600092019190915250929550610415945050505050565b005b610240610586565b610240610602565b6102406004803603602081101561026857600080fd5b50356001600160a01b031661067e565b6102406004803603602081101561028e57600080fd5b50351515610705565b610240600480360360208110156102ad57600080fd5b5035610787565b610240600480360360208110156102ca57600080fd5b5035610805565b610240600480360360408110156102e757600080fd5b5080359060200135610883565b61031a6004803603602081101561030a57600080fd5b50356001600160a01b031661090d565b604080519115158252519081900360200190f35b61024061098d565b610240610a09565b6102406004803603602081101561035457600080fd5b81019060208101813564010000000081111561036f57600080fd5b82018360208201111561038157600080fd5b803590602001918460018302840111640100000000831117156103a357600080fd5b91908080601f016020809104026020016040519081016040528093929190818152602001838380828437600092019190915250929550610a85945050505050565b610240610b65565b6102406004803603606081101561040257600080fd5b5080359060208101359060400135610be1565b61041e3361090d565b6104595760405162461bcd60e51b8152600401808060200182810382526024815260200180610c6e6024913960400191505060405180910390fd5b84866001600160a01b0316336001600160a01b03167f7959c380174061a21a3ba80243a032ba9cd10dc8bd1736d7e835c94e97a35a9887878787604051808581526020018060200184815260200180602001838103835286818151815260200191508051906020019080838360005b838110156104e05781810151838201526020016104c8565b50505050905090810190601f16801561050d5780820380516001836020036101000a031916815260200191505b50838103825284518152845160209182019186019080838360005b83811015610540578181015183820152602001610528565b50505050905090810190601f16801561056d5780820380516001836020036101000a031916815260200191505b50965050505050505060405180910390a4505050505050565b61058f3361090d565b6105ca5760405162461bcd60e51b8152600401808060200182810382526024815260200180610c6e6024913960400191505060405180910390fd5b60408051428152905133917f6e7b45210b79c12cd1332babd8d86c0bbb9ca898a89ce0404f17064dbfba18c0919081900360200190a2565b61060b3361090d565b6106465760405162461bcd60e51b8152600401808060200182810382526024815260200180610c6e6024913960400191505060405180910390fd5b60408051428152905133917f07f0eaafadb9abb1d28da85d4b4c74f1939fd61b535c7f5ab501f618f07e76ee919081900360200190a2565b6106873361090d565b6106c25760405162461bcd60e51b8152600401808060200182810382526024815260200180610c6e6024913960400191505060405180910390fd5b6040805142815290516001600160a01b0383169133917f822b3073be62c5c7f143c2dcd71ee266434ee935d90a1eec3be34710ac8ec1a29181900360200190a350565b61070e3361090d565b6107495760405162461bcd60e51b8152600401808060200182810382526024815260200180610c6e6024913960400191505060405180910390fd5b604080518215158152426020820152815133927fbef11c059eefba82a15aea8a3a89c86fd08d7711c88fa7daea2632a55488510c928290030190a250565b6107903361090d565b6107cb5760405162461bcd60e51b8152600401808060200182810382526024815260200180610c6e6024913960400191505060405180910390fd5b604080514281529051829133917f44b7f176bcc739b54bd0800fe491cbdea19df7d4d6b19c281462e6b4fc5043449181900360200190a350565b61080e3361090d565b6108495760405162461bcd60e51b8152600401808060200182810382526024815260200180610c6e6024913960400191505060405180910390fd5b604080514281529051829133917fe34c70bd3e03956978a5c76d2ea5f3a60819171afea6dee4fc12b2e45f72d43d9181900360200190a350565b61088c3361090d565b6108c75760405162461bcd60e51b8152600401808060200182810382526024815260200180610c6e6024913960400191505060405180910390fd5b60408051838152602081018390524281830152905133917f8ee737ab16909c4e9d1b750814a4393c9f84ab5d3a29c08c313b783fc846ae33919081900360600190a25050565b6000805460408051634f558e7960e01b81526001600160a01b03858116600483015291519190921691634f558e79916024808301926020929190829003018186803b15801561095b57600080fd5b505afa15801561096f573d6000803e3d6000fd5b505050506040513d602081101561098557600080fd5b505192915050565b6109963361090d565b6109d15760405162461bcd60e51b8152600401808060200182810382526024815260200180610c6e6024913960400191505060405180910390fd5b60408051428152905133917f8fd2cfb62a35fccc1ecef829f83a6c2f840b73dad49d3eaaa402909752086d4b919081900360200190a2565b610a123361090d565b610a4d5760405162461bcd60e51b8152600401808060200182810382526024815260200180610c6e6024913960400191505060405180910390fd5b60408051428152905133917fa5ee7a2b0254fce91deed604506790ed7fa072d0b14cba4859c3bc8955b9caac919081900360200190a2565b610a8e3361090d565b610ac95760405162461bcd60e51b8152600401808060200182810382526024815260200180610c6e6024913960400191505060405180910390fd5b604080516020808252835181830152835133937fa6e9673b5d53b3fe3c62b6459720f9c2a1b129d4f69acb771404ba8681b6a9309386939092839283019185019080838360005b83811015610b28578181015183820152602001610b10565b50505050905090810190601f168015610b555780820380516001836020036101000a031916815260200191505b509250505060405180910390a250565b610b6e3361090d565b610ba95760405162461bcd60e51b8152600401808060200182810382526024815260200180610c6e6024913960400191505060405180910390fd5b60408051428152905133917f1e61af503f1d7de21d5300094c18bf8700f82b2951a4d54dd2adda13f6b3da30919081900360200190a2565b610bea3361090d565b610c255760405162461bcd60e51b8152600401808060200182810382526024815260200180610c6e6024913960400191505060405180910390fd5b604080518381526020810183905242818301529051849133917f7f7d7327762d01d2c4a552ea0be2bc5a76264574a80aa78083e691a840e509f29181900360600190a350505056fe43616c6c6572206973206e6f7420617070726f76656420746f206c6f67206576656e7473a265627a7a723158203e3afc1df726271db382f3aba1a8ecb882bc185ab8068598923edcaf5e99f49164736f6c63430005110032",
+  "linkReferences": {},
+  "deployedLinkReferences": {}
+}
