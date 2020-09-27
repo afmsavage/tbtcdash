@@ -9,8 +9,9 @@ import { DataService } from "../services/data.service";
 export class HomeComponent implements OnInit {
   constructor(private dataService: DataService) {}
 
-  ngOnInit() {
+  async ngOnInit() {
     // TODO
-    this.dataService.getData().subscribe();
+    const weight = await this.dataService.getWeight();
+    console.log("WEIGHT:", weight);
   }
 }
