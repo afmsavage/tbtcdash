@@ -14,7 +14,7 @@ module.exports = async function (context, req) {
         const keepBondingContract = new ethers.Contract(KeepBonding.networks["1"].address, KeepBonding.abi, provider);
         const available = await keepBondingContract.unbondedValue(addr)
         context.res = {
-            body: `available for bonding: ${ethers.utils.formatEther(available)}`
+            body: `ETH available for bonding: ${ethers.utils.formatEther(available)}`
         }
     } catch (err) {
         console.error(`Could not authorize: ${err.message}`)
